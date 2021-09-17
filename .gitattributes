@@ -1,2 +1,2 @@
-*.cppm    text diff=cpp
-*.cppm linguist-language=C++
+*.cppm	diff=cpp
+*.cppm	linguist-language=C++
