@@ -10,7 +10,7 @@ set(ZLIB_ENABLE_TESTS OFF)
 add_subdirectory(thirdparty/zlib-ng)
 
 set(GLFW_BUILD_DOCS OFF)
-set(GLFW_GLFW_INSTALL OFF)
+set(GLFW_INSTALL OFF)
 add_subdirectory(thirdparty/glfw)
 
 message("CMAKE_CXX_SOURCE_FILE_EXTENSIONS ${CMAKE_CXX_SOURCE_FILE_EXTENSIONS}")
