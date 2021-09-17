@@ -1,9 +1,9 @@
 module;
 
-#include <compare>
-#include <type_traits>
-
 export module openhomm.math:vector;
+
+import <compare>;
+import <type_traits>;
 
 export namespace math {
     template <typename T>

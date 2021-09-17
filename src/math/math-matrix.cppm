@@ -1,7 +1,8 @@
 module;
-#include <compare>
+
 export module openhomm.math:matrix;
 
+import <compare>;
 import :vector;
 
 export namespace math {
