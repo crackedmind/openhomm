@@ -56,8 +56,10 @@ export {
 	using ::zng_gzopen;
 	using ::zng_gzbuffer;
 	using ::zng_gzread;
+	using ::zng_gzfread;
 	using ::zng_gzclose;
 	using ::zng_gzwrite;
+	using ::zng_gzfwrite;
 	using ::zng_gzseek;
 	using ::zng_gzflush;
 	using ::zng_gzrewind;
