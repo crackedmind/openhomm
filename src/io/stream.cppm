@@ -1,6 +1,6 @@
 module;
 
-export module io;
+export module openhomm.io;
 
 import <cstdint>;
 import <cstdio>;
