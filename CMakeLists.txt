@@ -31,6 +31,7 @@ set(OPENHOMM_HEADER_UNITS
 
 set(OPENHOMM_MODULES
     modules/glfw.cppm
+    modules/zlib.cppm
 )
 
 add_executable(openhomm ${OPENHOMM_SRC} ${OPENHOMM_MODULES})
@@ -38,7 +39,8 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/src FILES ${OPENHOMM_SRC})
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${OPENHOMM_MODULES})
 
 target_compile_features(openhomm PUBLIC cxx_std_23)
-target_link_libraries(openhomm PUBLIC glfw zlib opengl32)
+target_link_libraries(openhomm PUBLIC glfw zlibstatic opengl32)
+target_compile_definitions(openhomm PRIVATE WITH_GZFILEOP)
 #target_include_directories(openhomm PUBLIC src)
 target_compile_options(openhomm PRIVATE
     $<$<CXX_COMPILER_ID:MSVC>:
