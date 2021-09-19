@@ -20,6 +20,7 @@ set(OPENHOMM_SRC
     src/math/math-matrix.cppm
     src/math/math.cpp
     src/math/math.cppm
+    src/io/stream.cppm
 
     src/main.cpp
     src/application.cppm
