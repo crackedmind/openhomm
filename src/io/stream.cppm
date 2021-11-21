@@ -10,25 +10,38 @@ import thirdparty.zlib;
 
 export {
 	namespace io {
-		using streampos = long long;
-		using streamoff = long long;
 
-		class stream {
-		public:
-			enum class seek_origin {
-				begin = 0,
-				current,
-				end
-			};
+		using streampos = size_t;
+		using streamoff = size_t;
 
+		enum class seek_origin {
+			begin = 0,
+			current,
+			end
+		};
+
+		enum class stream_mode {
+			read_only,
+			read_write,
+			write_only
+		};
+
+		static constexpr stream_mode read_only = stream_mode::read_only;
+		static constexpr stream_mode read_write = stream_mode::read_write;
+		static constexpr stream_mode write_only = stream_mode::write_only;
+
+		struct stream {
 			virtual ~stream() = default;
+
+			virtual bool is_open() { return opened_; }
 
 			virtual size_t read(void* dst, size_t size) = 0;
 			virtual size_t write(const void* src, size_t size) = 0;
 
 			virtual void seek(streamoff pos, seek_origin dir = seek_origin::begin) = 0;
-			virtual streampos position() = 0;
+			virtual streampos position() const = 0;
 			virtual void flush() = 0;
+			virtual bool eof() const = 0;
 
 			template<typename T>
 			T read() {
@@ -75,18 +88,27 @@ export {
 			double read_double() {
 				return read<double>();
 			}
+		protected:
+			bool opened_{ false };
 		};
 
-		class memory_stream : public stream {
+		struct memory_stream : stream {
 		protected:
 			streampos position_ = 0;
 			void* data_ = nullptr;
 			size_t data_size_ = 0;
+			bool owning_{ false };
 		public:
 			memory_stream(void* ptr, size_t size) : data_(ptr), data_size_(size) {
+				opened_ = true;
 			}
 
-			~memory_stream() override = default;
+			~memory_stream() override {
+				if (owning_) {
+					delete[] data_;
+				}
+				opened_ = false;
+			}
 
 			size_t read(void* dst, size_t size) override {
 				memcpy(dst, (uint8_t*)data_ + position_, size);
@@ -100,11 +122,15 @@ export {
 				return size;
 			}
 
-			streampos position() override {
+			streampos position() const override {
 				return position_;
 			}
 
 			void flush() override {
+			}
+
+			bool eof() const override {
+				return position_ >= data_size_;
 			}
 
 			void seek(streamoff pos, seek_origin dir = seek_origin::begin) override {
@@ -126,22 +152,10 @@ export {
 			}
 		};
 
-		class file_stream : public stream {
+		struct file_stream : stream {
 		protected:
 			FILE* fhandle_{ nullptr };
-			bool opened_{ false };
 		public:
-
-			enum stream_mode {
-				ReadOnly,
-				ReadWrite,
-				WriteOnly
-			};
-
-			static constexpr stream_mode read_only = stream_mode::ReadOnly;
-			static constexpr stream_mode read_write = stream_mode::ReadWrite;
-			static constexpr stream_mode write_only = stream_mode::WriteOnly;
-
 			file_stream(const std::string& filename, stream_mode mode) {
 				const char* m = [mode]() {
 					switch (mode) {
@@ -170,8 +184,6 @@ export {
 				}
 			}
 
-			bool is_open() { return opened_; }
-
 			size_t read(void* dst, size_t size) override {
 				return fread(dst, size, 1, fhandle_);
 			}
@@ -180,7 +192,7 @@ export {
 				return fwrite(src, size, 1, fhandle_);
 			}
 
-			streampos position() override {
+			streampos position() const override {
 #ifdef _WIN32
 				return _ftelli64(fhandle_);
 #else
@@ -211,20 +223,17 @@ export {
 			void flush() override {
 				fflush(fhandle_);
 			}
+
+			bool eof() const override {
+				return feof(fhandle_);
+			}
 		};
 
-		class gzstream : public stream {
+		struct gzstream : stream {
 		protected:
 			gzFile handle_ { nullptr };
 			bool opened_{ false };
 		public:
-			enum stream_mode {
-				ReadOnly,
-				WriteOnly
-			};
-
-			static constexpr stream_mode read_only = stream_mode::ReadOnly;
-			static constexpr stream_mode write_only = stream_mode::WriteOnly;
 
 			gzstream(const std::string& filename, stream_mode mode) {
 				const char* m = [mode]() {
@@ -260,7 +269,7 @@ export {
 				return zng_gzfwrite(src, size, 1, handle_);
 			}
 
-			streampos position() override {
+			streampos position() const override {
 				return zng_gzoffset(handle_);
 			}
 
@@ -280,6 +289,10 @@ export {
 
 			void flush() override {
 				zng_gzflush(handle_, ZNG_FINISH);
+			}
+
+			bool eof() const override {
+				return zng_gzeof(handle_);
 			}
 		};
 	}
