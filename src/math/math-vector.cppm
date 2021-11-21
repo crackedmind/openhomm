@@ -378,21 +378,6 @@ export namespace math {
         return sqrt(dot(a, a));
     }
 
-    extern template struct vector2<float>;
-    extern template struct vector2<double>;
-    extern template struct vector2<int>;
-    extern template struct vector2<unsigned int>;
-
-    extern template struct vector3<float>;
-    extern template struct vector3<double>;
-    extern template struct vector3<int>;
-    extern template struct vector3<unsigned int>;
-
-    extern template struct vector4<float>;
-    extern template struct vector4<double>;
-    extern template struct vector4<int>;
-    extern template struct vector4<unsigned int>;
-
     using  vec2 = vector2<float>;
     using dvec2 = vector2<double>;
     using ivec2 = vector2<int>;

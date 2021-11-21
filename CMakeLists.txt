@@ -18,7 +18,6 @@ message("CMAKE_CXX_SOURCE_FILE_EXTENSIONS ${CMAKE_CXX_SOURCE_FILE_EXTENSIONS}")
 set(OPENHOMM_SRC 
     src/math/math-vector.cppm
     src/math/math-matrix.cppm
-    src/math/math.cpp
     src/math/math.cppm
     src/io/stream.cppm
 
