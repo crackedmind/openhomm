@@ -6,7 +6,7 @@ import <cstdint>;
 import <cstdio>;
 import <cstring>;
 import <string>;
-import thirdparty.zlib;
+import <zlib-ng.h>;
 
 export {
 	namespace io {
@@ -288,7 +288,7 @@ export {
 			}
 
 			void flush() override {
-				zng_gzflush(handle_, ZNG_FINISH);
+				zng_gzflush(handle_, Z_FINISH);
 			}
 
 			bool eof() const override {

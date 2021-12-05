@@ -1,10 +1,10 @@
 #include <iostream>
 #include <format>
 
-//import <GLFW/glfw3.h>;
+import <GLFW/glfw3.h>;
 import openhomm.math;
 import openhomm.application;
-import thirdparty.glfw;
+
 
 #if defined(WIN32) && defined(_MSC_VER)
 #   ifdef __clang__
