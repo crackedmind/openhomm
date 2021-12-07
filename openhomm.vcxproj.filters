@@ -39,5 +39,21 @@
     <ClCompile Include="src\io\stream.cppm">
       <Filter>Source Files\io</Filter>
     </ClCompile>
+    <ClCompile Include="src\io\stream-base.cppm">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\stream-file.cppm">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\stream-memory.cppm">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\stream-gz.cppm">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="vcpkg.json" />
   </ItemGroup>
 </Project>

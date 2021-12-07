@@ -148,11 +148,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\application.cppm" />
+    <ClCompile Include="src\io\stream-base.cppm" />
+    <ClCompile Include="src\io\stream-file.cppm" />
+    <ClCompile Include="src\io\stream-gz.cppm" />
+    <ClCompile Include="src\io\stream-memory.cppm" />
     <ClCompile Include="src\io\stream.cppm" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\math\math-matrix.cppm" />
     <ClCompile Include="src\math\math-vector.cppm" />
     <ClCompile Include="src\math\math.cppm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="vcpkg.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
