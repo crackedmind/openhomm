@@ -4,6 +4,6 @@
     "version": "0.0.1",
     "dependencies": [
       "zlib-ng",
-      "glfw3"
+      "sdl2"
     ]
   }

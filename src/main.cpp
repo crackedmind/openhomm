@@ -1,7 +1,9 @@
-#include <iostream>
-#include <format>
+//#include <iostream>
+//#include <format>
 
-import <GLFW/glfw3.h>;
+import <format>;
+import <iostream>;
+import <SDL2/SDL.h>;
 import openhomm.math;
 import openhomm.application;
 
@@ -23,28 +25,40 @@ extern "C" {
 #   endif
 #endif
 
-auto main([[maybe_unused]] int  argc, [[maybe_unused]] char** argv) -> int {
+int main(int argc, char** argv) {
     Application app(argc, argv);
-    glfwInit();
-    GLFWwindow* window = glfwCreateWindow(1280, 720, "Hello modules", nullptr, nullptr);
 
-    if (!window) {
-        std::cout << "Error" << std::endl;
-        glfwTerminate();
-        exit(1);
-    }
-
-    glfwSetMouseButtonCallback(window, []([[maybe_unused]] GLFWwindow* window, int button, int action, int mods) {
-        std::cout << std::format("glfwSetMouseButtonCallback({},{},{})\n", button, action, mods);
-    });
-
-    while (!glfwWindowShouldClose(window))
+    if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0)
     {
-        glfwPollEvents();
-        glfwSwapBuffers(window);
+        std::cout << std::format("SDL_Init fail {}\n", SDL_GetError());
+        return 1;
     }
 
-    glfwTerminate();
+    SDL_DisplayMode current;
+    SDL_GetCurrentDisplayMode(0, &current);
+
+    SDL_Window* window = SDL_CreateWindow("Openhomm", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+
+    if (window == nullptr) {
+        return 1;
+    }
+
+    bool done = false;
+    while (!done) {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
+            case SDL_QUIT:
+                done = true;
+                break;
+            }
+        }
+    }
+
+
+    SDL_DestroyWindow(window);
+
+    SDL_Quit();
 
     return 0;
 }
