@@ -1,6 +1,6 @@
-module;
-
 export module openhomm.application;
+
+import <SDL3/SDL.h>;
 
 export {
 	struct Application {

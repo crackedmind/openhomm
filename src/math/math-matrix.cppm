@@ -2,7 +2,7 @@ module;
 
 export module openhomm.math:matrix;
 
-import <compare>;
+import std;
 import :vector;
 
 export namespace math {
