@@ -19,6 +19,9 @@
     <Filter Include="Source Files\io">
       <UniqueIdentifier>{3a2c5269-0403-4bd3-bd29-45f34672daf4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{00f09924-24d5-473e-9a44-cdcc8d3fd5d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\application.cppm">
@@ -45,15 +48,41 @@
     <ClCompile Include="src\io\stream-file.cppm">
       <Filter>Source Files\io</Filter>
     </ClCompile>
-    <ClCompile Include="src\io\stream-memory.cppm">
+    <ClCompile Include="src\io\stream-span.cppm">
       <Filter>Source Files\io</Filter>
     </ClCompile>
     <ClCompile Include="src\io\stream-gz.cppm">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\core-logger.cppm">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\core.cppm">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\io.cppm">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\vfs.cppm">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="std.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="std.compat.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\stream-memory.cppm">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\io-print.cppm">
       <Filter>Source Files\io</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
     <None Include="vcpkg.json" />
+    <None Include=".editorconfig" />
+    <None Include="vcpkg-configuration.json" />
   </ItemGroup>
 </Project>
