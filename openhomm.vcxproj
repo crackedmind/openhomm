@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -117,13 +117,17 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SDL_MAIN_HANDLED;WITH_GZFILEOP;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WITH_GZFILEOP;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
       <AdditionalHeaderUnitDependencies>
       </AdditionalHeaderUnitDependencies>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <TranslateIncludes>false</TranslateIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,11 +140,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SDL_MAIN_HANDLED;WITH_GZFILEOP;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WITH_GZFILEOP;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <TranslateIncludes>false</TranslateIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,18 +159,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\application.cppm" />
+    <ClCompile Include="src\core\core.cppm" />
+    <ClCompile Include="src\core\core-logger.cppm" />
+    <ClCompile Include="src\core\core-property.cppm" />
+    <ClCompile Include="src\io\io.cppm" />
+    <ClCompile Include="src\io\io-print.cppm" />
     <ClCompile Include="src\io\stream-base.cppm" />
     <ClCompile Include="src\io\stream-file.cppm" />
     <ClCompile Include="src\io\stream-gz.cppm" />
     <ClCompile Include="src\io\stream-memory.cppm" />
+    <ClCompile Include="src\io\stream-span.cppm" />
     <ClCompile Include="src\io\stream.cppm" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\math\math-matrix.cppm" />
     <ClCompile Include="src\math\math-vector.cppm" />
     <ClCompile Include="src\math\math.cppm" />
+    <ClCompile Include="std.compat.ixx" />
+    <ClCompile Include="std.ixx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="vcpkg-configuration.json" />
     <None Include="vcpkg.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
