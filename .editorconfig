@@ -1,10 +1,81 @@
-# Rules in this file were initially inferred by Visual Studio IntelliCode from the E:\Projects\openhomm\openhomm\ codebase based on best match to current usage at 07.01.2022
-# You can modify the rules from these initially generated values to suit your own policies
-# You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
-[*]
-# end_of_line = lf
+# Enable top-most EditorConfig file
+root = true
+
+# Visual Studio solutions
+[*.sln]
+
+# Common settings
+charset = utf-8-bom
+end_of_line = crlf
+indent_size = 4
+indent_style = tab
+insert_final_newline = true
+tab_width = 4
+
+# Visual C++ files
+[*.{vcxproj,filters}]
+
+# Common settings
+charset = utf-8
+end_of_line = crlf
+indent_size = 2
+indent_style = space
+insert_final_newline = false
+
+# C++ sources
+[*.{cpp,cppm,ixx}]
+charset = utf-8
+end_of_line = crlf
+indent_size = 4
+indent_style = space
 insert_final_newline = true
 
-[*.cppm]
-indent_style = space
+# XML-based files
+[*.{props,targets}]
+
+# Common settings
+charset = utf-8
+end_of_line = crlf
 indent_size = 4
+indent_style = space
+insert_final_newline = true
+
+# YAML-based files
+[*.{yml,yaml}]
+
+# Common settings
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+
+# JSON-based files
+[*.json]
+
+# Common settings
+charset = utf-8
+end_of_line = crlf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+
+# CMake-based files
+[{CMakeLists.txt,*.cmake}]
+
+# Common settings
+charset = utf-8
+end_of_line = crlf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+
+# Markdown documents
+[*.md]
+
+# Common settings
+charset = utf-8
+end_of_line = crlf
+indent_size = 2
+indent_style = space
+insert_final_newline = true

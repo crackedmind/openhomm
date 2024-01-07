@@ -1,2 +1,34 @@
-*.cppm	diff=cpp
-*.cppm	linguist-language=C++
+# Global attributes for forcing line endings normalization of specific files
+
+* text=auto
+
+# Visual Studio solutions
+*.sln text eol=crlf encoding=utf-8-bom
+
+# Visual C++ files
+*.vcxproj text eol=crlf encoding=utf-8
+*.filters text eol=crlf encoding=utf-8
+
+# C++ sources
+*.cpp  text eol=crlf encoding=utf-8
+*.cppm text eol=crlf encoding=utf-8 diff=cpp
+*.ixx  text eol=crlf encoding=utf-8 diff=cpp
+*.cppm linguist-language=C++
+
+# XML-based files
+*.props   text eol=crlf encoding=utf-8
+*.targets text eol=crlf encoding=utf-8
+
+# YAML-based files
+*.yml  text eol=lf encoding=utf-8
+*.yaml text eol=lf encoding=utf-8
+
+# JSON-based files
+*.json text eol=crlf encoding=utf-8
+
+# CMake-based files
+CMakeLists.txt text eol=crlf encoding=utf-8
+*.cmake        text eol=crlf encoding=utf-8
+
+# Markdown documents
+*.md text eol=crlf encoding=utf-8
