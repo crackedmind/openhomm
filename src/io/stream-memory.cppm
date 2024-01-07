@@ -12,6 +12,7 @@ export namespace io {
         streampos position_ = 0;
         std::vector<int8_t> data_;
         size_t data_size_ = 0;
+
     public:
         memory_stream() = default;
 

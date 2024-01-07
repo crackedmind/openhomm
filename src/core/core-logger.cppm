@@ -114,7 +114,9 @@ struct std::formatter<core::log_level> : std::formatter<std::string_view> {
 export template <>
 struct std::formatter<std::source_location>{
     template <typename ParseContext>
-    auto parse(ParseContext& ctx) { return ctx.begin(); }
+    auto parse(ParseContext& ctx) {
+        return ctx.begin();
+    }
 
     template <typename FormatContext>
     auto format(const std::source_location &loc, FormatContext& ctx) const {

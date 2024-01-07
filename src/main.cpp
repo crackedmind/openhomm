@@ -31,8 +31,7 @@ int main(int argc, char** argv) {
 
     SDL_LogSetAllPriority(SDL_LOG_PRIORITY_VERBOSE);
 
-    if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0)
-    {
+    if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
         core::error("SDL_Init fail {}\n", SDL_GetError());
         return 1;
     }
@@ -46,13 +45,12 @@ int main(int argc, char** argv) {
             case SDL_LOG_PRIORITY_WARN:     return core::log_level::warning;
             case SDL_LOG_PRIORITY_ERROR:    return core::log_level::error;
             case SDL_LOG_PRIORITY_CRITICAL: return core::log_level::critical;
-            default: return core::log_level::none;
+            default:                        return core::log_level::none;
             }
         }();
 
         core::log(core::log_level::info, "{}", message);
     }, nullptr);
-
 
     SDL_DisplayMode current;
     SDL_GetCurrentDisplayMode(0, &current);
@@ -75,6 +73,7 @@ int main(int argc, char** argv) {
                 break;
             }
         }
+
         //Clear screen
         SDL_RenderClear(renderer);
 
@@ -85,7 +84,6 @@ int main(int argc, char** argv) {
         SDL_RenderPresent(renderer);
         SDL_Delay(1);
     }
-
 
     SDL_DestroyWindow(window);
 

@@ -12,7 +12,9 @@ export {
         template <class T>
         struct formatter<math::vector2<T>> {
             template <typename ParseContext>
-            auto parse(ParseContext& ctx) { return ctx.begin(); }
+            auto parse(ParseContext& ctx) {
+                return ctx.begin();
+            }
 
             template <typename FormatContext> requires(std::floating_point<T>)
             auto format(const math::vector2<T>& v, FormatContext& ctx) const {
@@ -27,7 +29,9 @@ export {
         template <class T>
         struct formatter<math::vector3<T>> {
             template <typename ParseContext>
-            auto parse(ParseContext& ctx) { return ctx.begin(); }
+            auto parse(ParseContext& ctx) {
+                return ctx.begin();
+            }
 
             template <typename FormatContext> requires(std::floating_point<T>)
             auto format(const math::vector3<T>& v, FormatContext& ctx) const {
@@ -43,7 +47,9 @@ export {
         template <class T>
         struct formatter<math::vector4<T>> {
             template <typename ParseContext>
-            auto parse(ParseContext& ctx) { return ctx.begin(); }
+            auto parse(ParseContext& ctx) {
+                return ctx.begin();
+            }
 
             template <typename FormatContext> requires(std::floating_point<T>)
             auto format(const math::vector4<T>& v, FormatContext& ctx) const {
