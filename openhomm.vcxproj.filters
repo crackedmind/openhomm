@@ -63,9 +63,6 @@
     <ClCompile Include="src\io\io.cppm">
       <Filter>Source Files\io</Filter>
     </ClCompile>
-    <ClCompile Include="src\io\vfs.cppm">
-      <Filter>Source Files\io</Filter>
-    </ClCompile>
     <ClCompile Include="std.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,7 +79,6 @@
   <ItemGroup>
     <None Include="README.md" />
     <None Include="vcpkg.json" />
-    <None Include=".editorconfig" />
     <None Include="vcpkg-configuration.json" />
   </ItemGroup>
 </Project>
