@@ -5,8 +5,7 @@ import <SDL3/SDL.h>;
 import openhomm.math;
 import openhomm.application;
 import openhomm.core;
-import openhomm.io.stream;
-import openhomm.io.print;
+import openhomm.io;
 import std;
 
 #if defined(WIN32) && defined(_MSC_VER)
@@ -49,7 +48,7 @@ int main(int argc, char** argv) {
             }
         }();
 
-        core::log(core::log_level::info, "{}", message);
+        core::log(level, "{}", message);
     }, nullptr);
 
     SDL_DisplayMode current;

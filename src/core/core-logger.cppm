@@ -3,8 +3,6 @@ export module openhomm.core:logger;
 import std;
 import <cstdint>;
 
-import openhomm.io.print;
-
 export namespace core {
     enum class log_level : uint8_t {
         trace,
@@ -20,16 +18,16 @@ export namespace core {
     template <typename... Ts>
     struct log
     {
-        log(log_level level, std::string_view fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
-            io::print("{:%F %T %z} [{}] ", std::chrono::utc_clock::now(), level);
-            io::println(fmt, std::forward<Ts>(ts)...);
+        log(log_level level, std::format_string<Ts...> fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
+            std::print("{:%F %T %z} [{}] ", std::chrono::utc_clock::now(), level);
+            std::println(fmt, std::forward<Ts>(ts)...);
         }
     };
 
     template <typename... Ts>
     struct trace
     {
-        trace(std::string_view fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
+        trace(std::format_string<Ts...> fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
             log<Ts...>(log_level::trace, fmt, std::forward<Ts>(ts)..., location);
         }
     };
@@ -37,7 +35,7 @@ export namespace core {
     template <typename... Ts>
     struct debug
     {
-        debug(std::string_view fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
+        debug(std::format_string<Ts...> fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
             log<Ts...>(log_level::debug, fmt, std::forward<Ts>(ts)..., location);
         }
     };
@@ -45,7 +43,7 @@ export namespace core {
     template <typename... Ts>
     struct info
     {
-        info(std::string_view fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
+        info(std::format_string<Ts...> fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
             log<Ts...>(log_level::info, fmt, std::forward<Ts>(ts)..., location);
         }
     };
@@ -53,7 +51,7 @@ export namespace core {
     template <typename... Ts>
     struct warning
     {
-        warning(std::string_view fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
+        warning(std::format_string<Ts...> fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
             log<Ts...>(log_level::warning, fmt, std::forward<Ts>(ts)..., location);
         }
     };
@@ -61,7 +59,7 @@ export namespace core {
     template <typename... Ts>
     struct error
     {
-        error(std::string_view fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
+        error(std::format_string<Ts...> fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
             log<Ts...>(log_level::error, fmt, std::forward<Ts>(ts)..., location);
         }
     };
@@ -69,7 +67,7 @@ export namespace core {
     template <typename... Ts>
     struct critical
     {
-        critical(std::string_view fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
+        critical(std::format_string<Ts...> fmt, Ts&&... ts, const std::source_location& location = std::source_location::current()) {
             log<Ts...>(log_level::critical, fmt, std::forward<Ts>(ts)..., location);
         }
     };

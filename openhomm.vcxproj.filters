@@ -63,16 +63,7 @@
     <ClCompile Include="src\io\io.cppm">
       <Filter>Source Files\io</Filter>
     </ClCompile>
-    <ClCompile Include="std.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="std.compat.ixx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\io\stream-memory.cppm">
-      <Filter>Source Files\io</Filter>
-    </ClCompile>
-    <ClCompile Include="src\io\io-print.cppm">
       <Filter>Source Files\io</Filter>
     </ClCompile>
   </ItemGroup>

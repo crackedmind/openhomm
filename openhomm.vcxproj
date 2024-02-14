@@ -128,6 +128,7 @@
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <TranslateIncludes>false</TranslateIncludes>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -162,7 +163,6 @@
     <ClCompile Include="src\core\core.cppm" />
     <ClCompile Include="src\core\core-logger.cppm" />
     <ClCompile Include="src\io\io.cppm" />
-    <ClCompile Include="src\io\io-print.cppm" />
     <ClCompile Include="src\io\stream-base.cppm" />
     <ClCompile Include="src\io\stream-file.cppm" />
     <ClCompile Include="src\io\stream-gz.cppm" />
@@ -173,8 +173,6 @@
     <ClCompile Include="src\math\math-matrix.cppm" />
     <ClCompile Include="src\math\math-vector.cppm" />
     <ClCompile Include="src\math\math.cppm" />
-    <ClCompile Include="std.compat.ixx" />
-    <ClCompile Include="std.ixx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
